@@ -45,3 +45,18 @@ def world_to_ndc(self, point: Vec2) -> Vec2:
         x = 2.0 * (point[0] - self.world_left) / self.world_width - 1.0
         y = 2.0 * (point[1] - self.world_bottom) / self.world_height - 1.0
         return vec2(x, y)
+ def projection_matrix(self) -> np.ndarray:
+        """Orthographic projection matching the configured world bounds."""
+        left = self.world_left
+        right = self.world_right
+        bottom = self.world_bottom
+        top = self.world_top
+        return np.array(
+            [
+                [2.0 / (right - left), 0.0, 0.0, -(right + left) / (right - left)],
+                [0.0, 2.0 / (top - bottom), 0.0, -(top + bottom) / (top - bottom)],
+                [0.0, 0.0, 1.0, 0.0],
+                [0.0, 0.0, 0.0, 1.0],
+            ],
+            dtype=np.float32,
+        )
