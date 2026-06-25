@@ -33,3 +33,10 @@ class Viewport:
 @property
     def world_height(self) -> float:
         return self.world_top - self.world_bottom
+def screen_to_world(self, screen_x: float, screen_y: float) -> Vec2:
+        """Convert GLFW screen coordinates (origin top-left) to world coordinates."""
+        nx = screen_x / self.window_width
+        ny = 1.0 - (screen_y / self.window_height)
+        world_x = self.world_left + nx * self.world_width
+        world_y = self.world_bottom + ny * self.world_height
+        return vec2(world_x, world_y)
