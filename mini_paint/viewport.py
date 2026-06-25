@@ -40,3 +40,8 @@ def screen_to_world(self, screen_x: float, screen_y: float) -> Vec2:
         world_x = self.world_left + nx * self.world_width
         world_y = self.world_bottom + ny * self.world_height
         return vec2(world_x, world_y)
+def world_to_ndc(self, point: Vec2) -> Vec2:
+        """Convert world coordinates to normalized device coordinates."""
+        x = 2.0 * (point[0] - self.world_left) / self.world_width - 1.0
+        y = 2.0 * (point[1] - self.world_bottom) / self.world_height - 1.0
+        return vec2(x, y)
