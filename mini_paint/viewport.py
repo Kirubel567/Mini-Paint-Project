@@ -26,3 +26,7 @@ class Viewport:
     def resize(self, width: int, height: int) -> None:
         self.window_width = max(1, width)
         self.window_height = max(1, height)
+
+@property
+    def world_width(self) -> float:
+        return self.world_right - self.world_left
