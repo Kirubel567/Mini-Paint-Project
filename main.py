@@ -3,10 +3,8 @@
 
 from mini_paint.application import MiniPaintApp
 
-
 def main() -> None:
     MiniPaintApp().run()
-
 
 if __name__ == "__main__":
     main()
